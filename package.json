@@ -1,19 +1,11 @@
 {
-  "name": "nodejs1",
+  "name": "chapter1_server",
   "version": "1.0.0",
   "description": "",
   "main": "httpServer.js",
   "scripts": {
-    "start": "node httpServer.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vgybalo/NodeJS1.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vgybalo/NodeJS1/issues"
-  },
-  "homepage": "https://github.com/vgybalo/NodeJS1#readme"
+  "license": "MIT"
 }
