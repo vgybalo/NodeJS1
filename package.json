@@ -1,11 +1,11 @@
 {
-  "name": "chapter1_server",
+  "name": "json_api",
   "version": "1.0.0",
   "description": "",
-  "main": "httpServer.js",
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT"
+  "license": "ISC"
 }
