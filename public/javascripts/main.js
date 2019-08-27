@@ -29,6 +29,7 @@ xhr.addEventListener('load', ()=> {
 });
 
 
+
 /*let data = null; 
 xhr.addEventListener('load', ()=> {
     console.log(xhr.response);//передає дані із users/data
