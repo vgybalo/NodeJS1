@@ -1,45 +1,30 @@
-const xhr = new XMLHttpRequest();
-const usersArr = document.querySelector('#usersArr');
+let input1 = document.querySelector('#login');
+let input2 = document.querySelector('#password');
+let button = document.querySelector('#button');
 
-xhr.open('GET','api/articles');
-xhr.setRequestHeader("Content-type", "application/json");//header
-xhr.send();//info post from users.js
-
-
-let data = null; 
-let title = null; 
-xhr.addEventListener('load', ()=> {
-    console.log(xhr.response);//передає дані із api
-    data = JSON.parse(xhr.response);//парсить JSON
-    article = data.title;
-    //articleData = JSON.parse(article);
-    //title = articleData[0]
-    //title = title.dataArr;
-     console.log(article);
+let  login = null;
+let password = null;
+button.addEventListener("click", () => {
+    login = input1.value;
+    password = input2.value;
     
-    
-    data.users.forEach(el => {
-        console.log(el);
-         let article = document.createElement('h2');
-            user.innerHTML = `${el.articles}`;
-            articlesArr.append(article);
+    console.log (login);
+    console.log (password);
     });
-    console.log(data);
-    //document.querySelector('#data').innerHTML = data.name; // передає  JSON в html
-});
 
 
+let load = {
+    login: login,
+    password: password
+};
 
-/*let data = null; 
-xhr.addEventListener('load', ()=> {
-    console.log(xhr.response);//передає дані із users/data
-    data = JSON.parse(xhr.response);//парсить JSON
-    data.users.forEach(el => {
-        console.log(el);
-         let user = document.createElement('h2');
-            user.innerHTML = 'This users name is'+' '+`${el.name}`;
-            usersArr.append(user);
-    });
-    console.log(data);
-    //document.querySelector('#data').innerHTML = data.name; // передає  JSON в html
-});*/
+var data = new FormData();
+data.append( "json", JSON.stringify( load ) );
+
+fetch("/",
+{
+    method: "POST",
+    body: data
+})
+.then(function(res){ return res.json(); })
+.then(function(data){ alert( JSON.stringify( data ) ) })
