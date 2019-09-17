@@ -1,30 +1,24 @@
-let input1 = document.querySelector('#login');
-let input2 = document.querySelector('#password');
-let button = document.querySelector('#button');
+const button = document.getElementById("submit");
 
-let  login = null;
-let password = null;
-button.addEventListener("click", () => {
-    login = input1.value;
-    password = input2.value;
+button.addEventListener('click',(e) => {
+    e.preventDefault();    
     
-    console.log (login);
-    console.log (password);
-    });
+    let model= document.getElementById("car_model").value;
+    let price = document.getElementById("car_price").value;
+    
+    const car = JSON.stringify( {model: model, price: price});
+    //console.log(car);
 
-
-let load = {
-    login: login,
-    password: password
-};
-
-var data = new FormData();
-data.append( "json", JSON.stringify( load ) );
-
-fetch("/",
-{
-    method: "POST",
-    body: data
+    const xhr = new XMLHttpRequest(); 
+    xhr.open("POST", "/", true);
+    xhr.setRequestHeader("Content-Type", "application/json");//header
+   
+    xhr.send(car);    
+    
 })
-.then(function(res){ return res.json(); })
-.then(function(data){ alert( JSON.stringify( data ) ) })
+
+
+
+
+
+

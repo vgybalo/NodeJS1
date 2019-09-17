@@ -1,1 +1,0 @@
-const readFile = require('/api.js')
