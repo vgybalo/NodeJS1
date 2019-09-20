@@ -1,8 +1,8 @@
-{
+const carSchema = {
   "$schema": "http://json-schema.org/draft-07/schema#",
   
-    "type": "object",
-    "properties": {
+  "type": "object",
+  "properties": {
         "model": {
           "type": "string",
           "minLength": 1,
@@ -33,4 +33,4 @@
   
 }
 
-module.exports = user;
+module.exports = carSchema;

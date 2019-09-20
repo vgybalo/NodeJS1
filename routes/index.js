@@ -5,7 +5,7 @@ const router = express.Router();
 const Ajv = require('ajv');
 
 const ajv = new Ajv();
-const userSchema = require('../schemas/user.js');
+const carSchema = require('../schemas/user.js');
 
 
 /* GET home page. */
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   console.log(req.body.name);
-  const validate = ajv.compile(userSchema);
+  const validate = ajv.compile(carSchema);
   const valid = validate({
     model: req.body.model,
     name: req.body.name,
