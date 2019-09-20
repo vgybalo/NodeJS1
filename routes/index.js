@@ -1,53 +1,36 @@
-var express = require('express');
-var router = express.Router();
-let car = []
-const jsonParser = express.json();
+const express = require('express');
+
+const router = express.Router();
+
+const Ajv = require('ajv');
+
+const ajv = new Ajv();
+const userSchema = require('../schemas/user.js');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Enter your car' });
+router.get('/', (req, res) => {
+  res.render('index', { title: 'Express' });
 });
 
-/* Post home page. Send data*/
-router.post('/', function(req, res) {
-  
-  
-let car_model = req.body.model;
-let car_price = req.body.price;
-
-if (typeof(car_model) === "string") {
-
-  if (car_model.length > 0 ) {
-    if (typeof(car_price) === "string") {
-
-  if (Number(car_price) > 0 ) {
-    car.push(req.body);
-    console.log(car);
+router.post('/', (req, res) => {
+  console.log(req.body.name);
+  const validate = ajv.compile(userSchema);
+  const valid = validate({
+    model: req.body.model,
+    name: req.body.name,
+    mileage: req.body.mileage,
+    qualities: req.body.qualities,
+    price: req.body.price,
+  });
+  console.log(valid);
+  if (!valid) {
+    const { errors } = validate;
+    const result = { status: 'invalid data' };
+    console.log(errors);
+    res.json(result);
   }
-  else if (Number(car_price)>1000000000) {
-    console.log ("You input very big number")
-  }
-  else console.log ("You don't input a number")
-}
-else console.log ("You input not a number")
-  }
-  else if (car_model.length>256) {
-    console.log ("You input very long text")
-  }
-  else console.log ("You don't input a text")
-}
-else console.log ("You input not a text")
-  /*let car_check = JSON.parse(req.body, (data)=> {
-    console.log(data);
-  });*/
-
-  
-
+  else res.send(valid);
 });
-
-
 
 module.exports = router;
-
-
