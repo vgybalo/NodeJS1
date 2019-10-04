@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  block content
+  h1= #{title}
+  form(action='/trip' method='post')
+    input(type='text' name='fromName' id='fromName')
+    input(type="submit" value="Отправить")
+   
