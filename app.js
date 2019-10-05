@@ -6,17 +6,20 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb+srv://base_nav:01Qwerty@cluster0-ojmjc.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb://localhost:27017/trips', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+/*mongoose.connect('mongodb+srv://adminTrip:1234@cluster0-vqkjy.mongodb.net/admin?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});*/
 const db = mongoose.connection;
-
+db.on('error', err => console.log('Mongo error occured',err));
 db.once('open',(err)=>{
   if(err) throw err;
   console.log('Connected to db');
-})
-
+});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -36,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/trip', apiRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,32 +1,35 @@
 var express = require('express');
 var router = express.Router();
+const UserModel = require('../models/user');
+const bodyParser = require("body-parser");
 
-const urlencodedParser = bodyParser.urlencoded({extended: false});
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  const trips = tripModel.find({})
-        .then(data => {
-        res.send(data)
-        });
+  
 });
 
-
-router.post("/", function (request, response) {
-    if(!request.body) return response.sendStatus(400);
-    
-     let fromNameList = req.query.fromName;
-    const trips = tripModel.find({"fromName" : fromNameList})
-        .then(data => {
-        res.send(data)
-        });
-    
-    res.send(fromNameList);
+router.post("/registration", function (request, response) {
+    //if(!request.body) return response.sendStatus(400);
+    console.log(request.body);
+     const user = new UserModel({
+        userName: request.body.user,
+        email: request.body.email,
+        pwd: request.body.pwd
+    });
+    user.save()
+    .catch(err => {
+        console.log(err);
+    }) ;
+    response.send(user);
    
 });
 
-
-console.dir(req.query.fromName)
+/*const users = ArticleModel.find({})
+        .then(data => {
+        res.send(data)
+        });*/
 
 
 module.exports = router;

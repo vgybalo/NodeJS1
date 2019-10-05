@@ -3,9 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  block content
-  h1= #{title}
-  form(action='/trip' method='post')
-    input(type='text' name='fromName' id='fromName')
-    input(type="submit" value="Отправить")
-   
+  h2 Registration
+  form(action='/api/registration' method='post')
+    input(type='text' name='user' id='user')
+    input(type='text' name='email' id='email')
+    input(type='text' name='pwd' id='pwd')
+    input(type="submit" value="Registration")
+  h2 LogIn
+  form(action='/api/login' method='post')
+    input(type='text' name='userNameLog' id='userNameLog')
+    input(type='text' name='pwdLog' id='pwdLog')
+    input(type="submit" value="LogIn")
