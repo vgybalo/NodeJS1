@@ -4,13 +4,19 @@ block content
   h1= title
   p Welcome to #{title}
   h2 Registration
-  form(action='/api/registration' method='post')
-    input(type='text' name='user' id='user')
-    input(type='text' name='email' id='email')
-    input(type='text' name='pwd' id='pwd')
+  form(action='/api' method='post')
+    input(type='text' name='user' placeholder='username')
+    input(type='text' name='email' placeholder='email')
+    input(type='text' name='pwd' placeholder='password')
     input(type="submit" value="Registration")
-  h2 LogIn
-  form(action='/api/login' method='post')
-    input(type='text' name='userNameLog' id='userNameLog')
-    input(type='text' name='pwdLog' id='pwdLog')
+  h2 Login
+  form(action='/api' method='post')
+    input(type='text' name='useremail' placeholder='email')
+    input(type='text' name='userpwd' placeholder='password')
     input(type="submit" value="LogIn")
+    h2 Change password
+  form(action='/api' method='post')
+    input(type='hidden' name='pwdchange' value='1')
+    input(type='text' name='oldpwd' placeholder='old password')
+    input(type='text' name='newpwd' placeholder='new password')
+    input(type="submit" value="change password")
