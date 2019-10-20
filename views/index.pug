@@ -3,20 +3,16 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  h2 Registration
+  h2 Books
   form(action='/api' method='post')
-    input(type='text' name='email' placeholder='email')
-    input(type='text' name='name' placeholder='user name')
-    input(type='text' name='surname' placeholder='user surname')
-    input(type='text' name='login' placeholder='login')
-    input(type='text' name='birthday' placeholder='you birthday(dd-mm-yyyy)')
-    input(type='text' name='phone' placeholder='phone')
-    input(type='text' name='pwd' placeholder='password')
-    input(type="submit" value="Registration")
-  h2 Login
+    input(type='text' name='book' placeholder='book name')
+    input(type="submit" value="Submit")
+  h2 Authors
   form(action='/api' method='post')
-    input(type='text' name='useremail' placeholder='email')
-    input(type='text' name='userpwd' placeholder='password')
-    input(type="submit" value="LogIn")
-    
-  
+    input(type='text' name='author' placeholder='author name')
+    input(type="submit" value="Submit")
+  h2 Books and authors
+  form(action='/api' method='post')
+    input(type='text' name='book_comp' placeholder='book name')
+    input(type='text' name='autho_comp' placeholder='author name')   
+    input(type="submit" value="Submit")  
