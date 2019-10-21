@@ -49,15 +49,37 @@ router.post("/", function (req, res) {
                 console.log(err);
             }) ;
     } 
-        
+
     else {
-        BookModel.findOne({"title" : req.body.book_comp})
-            populate('author').
-                exec(function (err, story) {
+       /* BookModel.findOne({"title" : req.body.book_comp})
+            .populate('authors')
+                .exec(function (err, story) {
                     if (err) return handleError(err);
-                res.send('The author is %s', story.author.name);   
+                res.send(story);   
             
-                }) 
+                }) */
+        let findBook =  new Promise((res, rej) => {
+           return BookModel.findOne({"title" : req.body.book_comp})
+            
+        })
+        .catch(err=> console.log(err));
+
+        let findAuthor =  new Promise((res, rej) => {
+           return  AuthorModel.findOne({"foolname" : req.body.autho_comp})
+        })
+        .catch(err=> console.log(err));
+
+        
+        Promise.all([findBook, findAuthor])
+            .then((el) => {
+                el[0].populate('authors')
+                .exec(function (err, story) {
+                    if (err) return handleError(err);
+                res.send(story);
+                
+                })
+            })    
+            .catch(err=> console.log(err));       
     }           
         
     
