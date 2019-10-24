@@ -4,6 +4,9 @@ const BookModel = require('../models/book');
 const AuthorModel = require('../models/author');
 const bodyParser = require("body-parser");
 
+let bookId = null;
+let authorId = null;
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
@@ -58,29 +61,22 @@ router.post("/", function (req, res) {
                 res.send(story);   
             
                 }) */
-        let findBook =  new Promise((res, rej) => {
-           return BookModel.findOne({"title" : req.body.book_comp})
-            
-        })
-        .catch(err=> console.log(err));
+            console.log(123)
+        let a =  BookModel.findOne({"title" : req.body.book_comp}).then(data=> bookId = data._id)
 
-        let findAuthor =  new Promise((res, rej) => {
-           return  AuthorModel.findOne({"foolname" : req.body.autho_comp})
-        })
-        .catch(err=> console.log(err));
+        let b  =  AuthorModel.findOne({"foolname" : req.body.autho_comp}).then(data=> authorId = data._id)
 
         
-        Promise.all([findBook, findAuthor])
-            .then((el) => {
-                el[0].populate('authors')
-                .exec(function (err, story) {
-                    if (err) return handleError(err);
-                res.send(story);
-                
-                })
+
+        Promise.all([a, b])
+            .then(el => {
+                BookModel.findOneAndUpdate({title : req.body.book_comp}, {$push:{autors:authorId}}, {new: true}).then(el=> console.log(el)).catch(err=> console.log(err));
+                AuthorModel.findOneAndUpdate({foolname : req.body.autho_comp}, {$push:{books:bookId}},  {new: true}).then(el=> console.log(el)).catch(err=> console.log(err));
+                console.log(authorId);
+                console.log(bookId);
             })    
-            .catch(err=> console.log(err));       
-    }           
+            .catch(err=> console.log(err));     
+    }          
         
     
 });
