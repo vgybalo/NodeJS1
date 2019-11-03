@@ -5,12 +5,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+//const bCrypt = require('bcrypt');
 
 mongoose.connect('mongodb://localhost:27017/test', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
+/*mongoose.connect('mongodb+srv://adminTrip:1234@cluster0-vqkjy.mongodb.net/admin?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});*/
 const db = mongoose.connection;
 db.on('error', err => console.log('Mongo error occured',err));
 db.once('open',(err)=>{
