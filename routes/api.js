@@ -3,6 +3,9 @@ var router = express.Router();
 const UserModel = require('../models/user');
 const bodyParser = require("body-parser");
 const Ajv = require('ajv');
+const bodyParser = require('body-parser');
+const bCrypt = require('bcrypt');
+const saltRounds = 10;
 
 const ajv = new Ajv();
 const userSchema = require('../schemas/users.js');
@@ -10,14 +13,22 @@ const userSchema = require('../schemas/users.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+   
     res.render('index', { title: 'Express' });
 });
 
+//bcrypt
+
+
 router.post("/", function (req, res) {
     if(!req.body) return res.sendStatus(400);
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(req.body.userpwd, 123456, function(err, hash) {
+        let userLogPwd = hash;
+        });
     let emailList = req.body.email;
     let userLogEmail = req.body.useremail;
-    let userLogPwd = req.body.userpwd;
+    
    
     if (!req.body.useremail) {
         UserModel.find({"email" : emailList})
@@ -32,7 +43,7 @@ router.post("/", function (req, res) {
                             userLogin: req.body.login,
                             userBirthday: req.body.birthday,
                             phone: req.body.phone,
-                            pwd: req.body.pwd
+                            pwd: userLogPwd
                         });
                         //console.log(valid);
                         if (!valid) {
@@ -49,11 +60,11 @@ router.post("/", function (req, res) {
                                 userLogin: req.body.login,
                                 userBirthday: req.body.birthday,
                                 phone: req.body.phone,
-                                pwd: req.body.pwd
+                                pwd: userLogPwd
                             
                             });
-
-                            
+                            let cookieHash = userLogPwd.slice(0, 5);
+                            res.cookie('visitorsId',cookieHash)/*.end('Cookie sent')*/
                         user.save()
                         res.send(user);
                         }
@@ -73,7 +84,7 @@ router.post("/", function (req, res) {
     else {
         UserModel.findOne({"email" : userLogEmail})
             .then(data => {
-                    if(data.email===userLogEmail && UserModel.comparePwd){
+                    if(UserModel.comparePwd && req.cookies.visitorsId===cookieHash){
                         res.send(`You are logged
                         <h2>Change password</h2>
                         <form action="/api/change" method="post">

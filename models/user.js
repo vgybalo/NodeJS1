@@ -34,7 +34,9 @@ const UserSchema = new mongoose.Schema({
 UserSchema.methods.comparePwd = function(cb) {
      let el = this.model('UserModel').findOne({userEmail: this.userEmail},
       
-     function (el) { if(el.pwd===this.pwd) return true})
+     function (el) { if(el.pwd===bcrypt.compare(this.pwd, hash, function(err, res) {
+                                 })
+    ) return true})
     
 };
 

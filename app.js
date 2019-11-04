@@ -5,7 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-//const bCrypt = require('bcrypt');
+const bCrypt = require('bcrypt');
+
+
+
 
 mongoose.connect('mongodb://localhost:27017/test', {
   useNewUrlParser: true,
@@ -37,6 +40,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//middleware for cookies
+app.use('/',function (req, res, next) {
+  if(req.cookies.mycookie1 ==='Ar'){
+    
+    next()
+  }
+  else res.sendStatus(404);
+  //console.log(new Date());
+  
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
