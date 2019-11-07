@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   userEmail: {
     type: String,
-    required: true
+    /*required: true*/
   },
   userName: {
     type: String,
@@ -31,15 +31,25 @@ const UserSchema = new mongoose.Schema({
   },
   });
 
-UserSchema.methods.comparePwd = function(cb) {
-     let el = this.model('UserModel').findOne({userEmail: this.userEmail},
-      
-     function (el) { if(el.pwd===bcrypt.compare(this.pwd, hash, function(err, res) {
-                                 })
-    ) return true})
-    
-};
+UserSchema.methods.comparePwd = async (pwd) => {
+  try {
+    const auth = await bcrypt.compare(this.pwd, pwd)
+    return auth;
+  }
+  catch(err) {
+     console.log(err);
+  }
+    };
 
+UserSchema.methods.hashPwd = async (pwd)=> {
+try {  
+  const hash = await bcrypt.hash(pwd, '123456');
+  return hash;
+}
+catch(err) {
+    console.log(err);
+}
+};
 
 const Model = mongoose.model('User', UserSchema);
 module.exports = Model;

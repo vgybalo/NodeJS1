@@ -42,7 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //middleware for cookies
-app.use('/',function (req, res, next) {
+/*app.use('/',function (req, res, next) {
   if(req.cookies.mycookie1 ==='Ar'){
     
     next()
@@ -50,7 +50,7 @@ app.use('/',function (req, res, next) {
   else res.sendStatus(404);
   //console.log(new Date());
   
-});
+});*/
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
