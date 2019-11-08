@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
   userEmail: {
@@ -31,7 +32,7 @@ const UserSchema = new mongoose.Schema({
   },
   });
 
-UserSchema.methods.comparePwd = async (pwd) => {
+/*UserSchema.methods.comparePwd = async (pwd) => {
   try {
     const auth = await bcrypt.compare(this.pwd, pwd)
     return auth;
@@ -39,11 +40,12 @@ UserSchema.methods.comparePwd = async (pwd) => {
   catch(err) {
      console.log(err);
   }
-    };
+    };*/
 
 UserSchema.methods.hashPwd = async (pwd)=> {
-try {  
-  const hash = await bcrypt.hash(pwd, '123456');
+try {
+  //const salt = await bcrypt.genSaltSync(10)  
+  const hash = await bcrypt.hash(pwd, 10);
   return hash;
 }
 catch(err) {
