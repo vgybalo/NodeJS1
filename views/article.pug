@@ -1,0 +1,8 @@
+extends layout
+
+  block content
+    h1=titleArticle
+    form(action='/api' method='post')
+        input(type='text' name='title' placeholder='title of the article')
+        input(type='text' name='articletext' placeholder='text of the article')
+        input(type="submit" value="Submit")

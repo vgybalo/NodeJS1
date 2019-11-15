@@ -1,14 +1,14 @@
-const UserModel = require('../models/user');
+const ArticleModel = require('../models/articleModel');
 const bcrypt = require('bcrypt');
-module.exports.CreateOne = async (login, pwd, role)=> {
+module.exports.CreateOneArticle = async (text, title, userId, published, comentId)=> {
    
     try {
             
-            const user = await UserModel ({
-                login, pwd, role
+            const article = await ArticleModel ({
+                text, title, userId, published, comentId
                         
             });
-            user.pwd = await user.hashPwd(pwd);
+           
             const data = await user.save();
             console.log(data);
              return data;

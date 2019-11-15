@@ -6,11 +6,10 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bCrypt = require('bcrypt');
+//const autoIncrement = require('mongoose-auto-increment');
 
 
-
-
-mongoose.connect('mongodb://localhost:27017/test', {
+mongoose.connect('mongodb://localhost:27017/article', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -24,6 +23,9 @@ db.once('open',(err)=>{
   if(err) throw err;
   console.log('Connected to db');
 });
+
+//autoIncrement.initialize(mongoose.connection); 
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -41,16 +43,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//middleware for cookies
-/*app.use('/',function (req, res, next) {
-  if(req.cookies.mycookie1 ==='Ar'){
-    
-    next()
-  }
-  else res.sendStatus(404);
-  //console.log(new Date());
-  
-});*/
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

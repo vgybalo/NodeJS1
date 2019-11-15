@@ -1,28 +1,9 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
-  userEmail: {
-    type: String,
-    /*required: true*/
-  },
-  userName: {
-    type: String,
-    required: true
-  },
-  userSurname: {
-    type: String,
-    required: true
-  },
-  userLogin: {
-    type: String,
-    required: true
-  },
-  /*userBirthday: {
-    type: Date,
-    required: true
-  },*/
-  phone: {
+  login: {
     type: String,
     required: true
   },
@@ -30,9 +11,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  role: {
+    type: String,
+    required: true
+  }  
   });
 
-/*UserSchema.methods.comparePwd = async (pwd) => {
+UserSchema.methods.comparePwd = async (pwd) => {
   try {
     const auth = await bcrypt.compare(this.pwd, pwd)
     return auth;
@@ -40,7 +25,7 @@ const UserSchema = new mongoose.Schema({
   catch(err) {
      console.log(err);
   }
-    };*/
+    };
 
 UserSchema.methods.hashPwd = async (pwd)=> {
 try {
@@ -57,6 +42,18 @@ catch(err) {
     console.log(err);
 }
 };
+
+//UserSchema.plugin(autoIncrement.plugin, 'User');
+autoIncrement.initialize(mongoose.connection);
+UserSchema.plugin(autoIncrement.plugin, {
+  model: 'UserSchema',
+  field: 'user_id',
+  startAt: 1,
+  incrementBy: 1
+});
+
+
+
 
 const Model = mongoose.model('User', UserSchema);
 module.exports = Model;
