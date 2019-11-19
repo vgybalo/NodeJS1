@@ -2,17 +2,4 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  h2 Registration
-  form(action='/api' method='post')
-    input(type='text' name='login' placeholder='login')
-    input(type='text' name='role' placeholder='your role')
-    input(type='text' name='pwd' placeholder='password')
-    input(type="submit" value="Registration")
-  h2 Login  
-  form(action='/api' method='post')
-    input(type='text' name='login' placeholder='login')
-    input(type='text' name='pwd' placeholder='password')
-    input(type="submit" value="Login")
- 
-  
+  p=content

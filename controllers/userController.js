@@ -1,20 +1,27 @@
 const UserModel = require('../models/user');
-const bcrypt = require('bcrypt');
-module.exports.CreateOne = async (login, pwd, role)=> {
-   
+module.exports.CreateOne = async (login, pwd)=> {
     try {
-            
-            const user = await UserModel ({
-                login, pwd, role
-                        
-            });
-            user.pwd = await user.hashPwd(pwd);
-            const data = await user.save();
-            console.log(data);
-             return data;
+        const user = UserModel ({
+            login, pwd
+        });
+        const data = await user.save();
+        console.log(data);
+        return data;
     }     
     catch(err) {
-            console.log(err);
+        console.log(err);
     }    
-}
-        
+};
+module.exports.LoginOne = async (login, pwd) => {
+    
+    try {
+        const user = await UserModel.findOne({login});
+        if (user.pwd === pwd ) {
+            return user;
+        }
+        else {console.log('Invalid login or pwd!'); }
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
