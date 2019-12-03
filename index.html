@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    </head>
+    <body>
+        <h1>Chat</h1>
+
+        <p></p>
+
+        <div class="chatWindow">
+            <span class="chatUserName">
+                
+            </span>
+        </div>
+
+        <input type="text" class="newMsg" name="newMsg">
+        <button type="button" >Submit</button>
+
+        <script>
+                var socket = io('http://localhost:3000');
+               const name = prompt('enter user name');
+                socket.on('news', function (data) {
+                  console.log(data);
+                  socket.emit('my other event', { my: name });
+                });
+
+                 socket.on('input',(data)=>{
+                    document.querySelector('.chatWindow').innerHTML+=data+ "<br />";
+                    
+                })
+
+                socket.on('msg',(data)=>{
+                    document.querySelector('.chatWindow').innerHTML+=data.name + ": " + data.msg + "<br />";
+                    
+                })
+                                
+                document.querySelector('button').addEventListener("click", function (){
+                        const msg  = document.querySelector(".newMsg").value;
+                        socket.emit('new-msg', {msg:msg, name: name })
+                        
+                    })
+
+                socket.on('output',(data)=>{
+                    document.querySelector('.chatWindow').innerHTML+=data+ "<br />";
+                    console.log(data);
+                })    
+</script>
+
+    </body>
+</html>
