@@ -1,32 +1,33 @@
+  
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    </head>
-    <body>
-        <h1>Articles</h1>
-
-        <p></p>
-
-        <div class="chatWindow">
-            <span class="chatUserName">
-                
-            </span>
-        </div>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+   
+</head>
+<body>
+    <div class="name"></div>   
+    <input type="text" class='url' placeholder="url/">
+    <input type="text" class='selector' placeholder="селектор">   
+    <button type="button">Отправить</button>
+    <div class="article"></div>
+    <script>
+        const socket = io('http://localhost:3000');
+            document.querySelector('button').addEventListener('click', () => {
+                const url = document.querySelector(".url").value;
+                const selector = document.querySelector(".selector").value;
+                socket.emit('new-msg', {url:url, selector:selector});                
+            });
+            
+            socket.on('msg',(data)=>{ 
+                console.log('front'+data)               
+                document.querySelector('.article').innerHTML+=data+"<br />";
+            });
         
-
-        <script>
-                var socket = io('http://localhost:3000');
-               
-
-                socket.on('msg',(data)=>{
-                    document.querySelector('.chatWindow').innerHTML+= 'article ' + data + "<br />";
-                    
-                })
-                                
-                
-</script>
-
-    </body>
+    </script>
+</body>
 </html>
