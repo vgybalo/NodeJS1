@@ -18,9 +18,9 @@ router.get('/registr', function(req, res) {
     
 });
 
-/*function populateStorage(key, value) {
-  localStorage.setItem(key, value);
-};*/
+function populateStorage(key, value) {
+  window.localStorage.setItem(key, value);
+};
 
 //registration
 router.post('/registr', async (req, res) => {
@@ -32,11 +32,11 @@ router.post('/registr', async (req, res) => {
           payload: {id:CreatOneController._id},
           privateKey: privKey
         });
-       /* const refreshtoken = jws.sign({
+       const refreshtoken = jws.sign({
           header:{alg:'RS256'},
           payload: {id:CreatOneController._id},
           privateKey: privKey2
-        });*/
+        });
 
         res.cookie('auth', token);
         //populateStorage('auth2', refreshtoken);
@@ -62,11 +62,11 @@ router.post('/login',  async (req, res) =>{
           payload: {id:UserLogin._id},
           privateKey: privKey
         });
-        /*const refreshtoken = jws.sign({
+        const refreshtoken = jws.sign({
           header:{alg:'RS256'},
           payload: {id:UserLogin._id},
           privateKey: privKey2
-        });*/
+        });
 
         res.cookie('auth', token);
       //  populateStorage('auth2', refreshtoken);
@@ -87,7 +87,7 @@ function verify (req, res, next) {
 
         next();
     }
-    /*else if (localStorage.getItem('auth2')){
+    else if (localStorage.getItem('auth2')){
         const{auth2}=localStorage.getItem('auth2');
         const verify= jwt.verify(auth2, pubKey2, {algorithms:['RS256']});
         const userId = jwt.verify(auth, pubKey, {algorithms:['RS256']});
@@ -100,7 +100,7 @@ function verify (req, res, next) {
         });
         res.cookie('auth',token);
         next();
-    }*/
+    }
     else {
         res.redirect('/login');
     }
