@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
+//const autoIncrement = require('mongoose-auto-increment');
 
 const ArticleSchema = new mongoose.Schema({
     title: {
@@ -17,7 +17,7 @@ const ArticleSchema = new mongoose.Schema({
 });
 
  
-ArticleSchema.plugin(autoIncrement.plugin, 'Article');
+//ArticleSchema.plugin(autoIncrement.plugin, 'Article');
 
 const Model = mongoose.model('Article', ArticleSchema);
 module.exports = Model;
