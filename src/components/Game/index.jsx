@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Square from './Square';
+//import Square from './Square';
 import styles from './styles.module.scss';
 
 export default class extends Component{
@@ -47,38 +47,15 @@ export default class extends Component{
       let currentSquare = this.state.squares;
      
       
-     // if (currentSquare[data] === null){
+
           currentSquare[data] = (this.state.count % 2 === 0) ? 'X' : 'O';
           this.setState({count : this.state.count + 1});
           this.setState({squares : currentSquare});
-     /* }
-      else {
-         console.log('you can not change your opinion');
-         this.state.text = 'you can not change your opinion'
-      }*/
+
 
       this.isWinner();
   }
-    /*this.handleCrist = this.crist.bind(this);
-    this.handleZero = this.zero.bind(this);
-  }*/
 
-  /*handleCrist(){
-    this.setState({
-        clickNumber: this.state.clickNumber='X',
-    })
-  }
-
-  handleZero(){
-    this.setState({
-        clickNumber: this.state.clickNumber='0',
-    })
-      //<h2 className={styles.count}>{this.state.clickNumber}</h2>
-       // <div>
-      //    <button type='button' onClick={this.handleInc}>inc</button>
-      //    <button type='button' onClick={this.handleDec}>dec</button>
-      //  </div>
-  }*/
 
   render(){
     return (
