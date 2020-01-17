@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-
-import Game from '../../components/Game';
+import Header from '../../components/Header';
+import Content from '../../components/Content';
 
 export default function(){
   return(
     <>
-      
-      <Game />
+      <Header />
+      <Content />
     < />
   )
 }

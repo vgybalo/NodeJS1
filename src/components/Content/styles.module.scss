@@ -1,0 +1,127 @@
+$font_color:#222B3A;
+$black:#222B3A;
+$orange:#FC890D;
+$blue:#296DCE;
+$light_blue:#1092CB;
+$footer_colour:#0099DD;
+$dark_blue:#222B3A;
+$white:#ffffff;
+$light_gray:#F3F3F3;
+$thems_gray:#FAFAFA;
+$gray:#979FAD;
+$age_colour:#979FAD;
+$dark_gray:#696969;
+$number_theme:#E1E1E1;
+$main_blue_bg:#56c3e0;
+$dark_orange:#FFA43F;
+$gray_bg_button:#DFDADA;
+$red:#EB5757;
+$light_gray_line:#F1F1F1;
+$link_orange:#FF8A00;
+$blue_text:#027EB4;
+$activity_border:#EAEAEA;
+$color_time:#BDBDBD;
+.container{
+    max-width: 1110px;
+    margin: 0 auto;
+    color: $font_color;
+    font-size: 16px;
+    padding: 0 10px;
+}
+.main_content{
+    position: relative;
+    height: 513px;
+    overflow: hidden;     
+    background: $main_blue_bg /* url(../../image/module_bg.jpg) no-repeat*/;
+    background-size: cover;
+    .name_main_content{
+        background: $dark_blue;
+        width: 50%;        
+        padding: 19px 0;
+        margin-top: 100px;              
+        h1{
+            font-family: 'Intro'; 
+            color: $white;
+            font-size: 44px;
+            line-height: 44px;
+            margin: 0;
+            text-align: right;
+            padding-right: 15%;            
+        }
+    }
+    .text{
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        p{
+            font-family: 'Proxima Nova Bold';
+            color: $dark_blue;
+            font-size: 16px;
+            line-height: 27px;
+        }
+        h3{
+            font-family: 'Proxima Nova Bold';
+            color: $white;
+            font-size: 24px;
+            line-height: 41px;
+        }
+    }
+    .range{
+        background: $light_gray;
+        border: 1px solid #F3F3F3;
+        box-sizing: border-box;
+        border-radius: 3px;
+        width: 468px;
+        height: 15px;
+        position: relative;
+        margin-top: 41px;
+        margin-bottom: 80px;
+        .content_range{
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background: #296DCE;
+            border-radius: 2px;
+            height: 9px;
+            width: 57%;
+            font-size: 38px;
+            line-height: 14px;
+            color:$black;
+            font-family: 'Proxima Nova Bold';
+            .left_range_count{
+                display: flex;                
+                position: absolute;
+                top: 25px;
+                left: 0px;
+                .number{
+                    font-family: 'Proxima Nova Bold';                            
+                    font-size: 38px;
+                    line-height: 32px;
+                    margin-right: 5px;
+                }
+                span{
+                    font-size: 14px;                            
+                    font-family: 'Proxima Nova Semibold'; 
+                }
+            }
+            .right_range_count{
+                display: flex;                
+                position: absolute;
+                top: 25px;
+                left: 100%;
+                .number{
+                    font-family: 'Proxima Nova Bold';                            
+                    font-size: 38px;
+                    margin-right: 5px;
+                    line-height: 32px;
+                }
+                span{
+                    font-size: 14px;                            
+                    font-family: 'Proxima Nova Semibold'; 
+                }
+            }                    
+
+        } 
+    }
+}
