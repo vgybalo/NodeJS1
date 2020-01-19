@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Header from '../../components/Header';
-import Content from '../../components/Content';
+import Head from '../../components/Head';
+import Tasks from '../../components/Tasks'
 
 export default function(){
   return(
     <>
       <Header />
-      <Content />
+      <Head />
+      <Tasks/>
     < />
   )
 }

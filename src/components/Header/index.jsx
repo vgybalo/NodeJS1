@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.module.scss';
+import logoPng from './image/logo.png';
 
 export default class extends Component{
     
@@ -10,7 +11,7 @@ export default class extends Component{
                     <div className={styles.main_menu}>
                         <div className={styles.container}>
                             <div className={styles.content_menu}>
-                                <a href="./" class={styles.logo}><img src="../../image/logo.svg" alt="logo" /></a>                    
+                                <a href="./" class={styles.logo}><img src={logoPng} alt="logo" /></a>                    
                                 <div className={styles.mobile_menu}>
                                 <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="23" height="2" rx="1" fill="#222B3A"/>

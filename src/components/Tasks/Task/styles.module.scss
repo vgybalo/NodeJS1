@@ -1,0 +1,193 @@
+/**************workout items*****************/
+.workout-item1 {
+  background: #FFFFFF;
+  border: 1.5px solid #FFA43F;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.workout-item-number {
+  position: relative;
+  width: 2vw;
+  height: 1.8vw;
+  text-align: center;
+  padding-top: 0.5vw;
+  font: 600 1vw  'proxima_regular', sans-serif;
+  background-color: #FFA43F;
+  color: #FFFFFF;
+  line-height: 1;
+  z-index: 3;
+}
+
+.workout-item-icon {
+  position: relative;
+  width: 4.81vw;
+  height: 4.81vw;
+  text-align: center;
+  padding: 1.375vw 0 0 1.575vw;
+  font: 600 1vw  'proxima_regular', sans-serif;
+  color: #FFFFFF;
+  line-height: 1;
+  z-index: 3;
+}
+
+.workout-item-1stline {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.workout-item-1stline-kindimg {
+  position: relative;
+  top: -7vw;
+  left: 10vw;
+  padding-right: 6px;
+}
+
+.workout-item-1stline-glases-kindtxt {
+  position: relative;
+  top: -7vw;
+  left: 10vw;
+  padding-right: 18px;
+  font: 600 1vw  'proxima_regular', sans-serif;
+  color: #979FAD;
+}
+
+.workout-item-1stline-timeimg {
+  position: relative;
+  top: -7vw;
+  left: 10vw;
+  padding-right: 6px;
+}
+
+.workout-item-1stline-timetxt {
+  position: relative;
+  top: -7vw;
+  left: 10vw;
+  padding-right: 8px;
+  font: 600 1vw  'proxima_regular', sans-serif;
+  color: #979FAD;
+}
+
+.workout-item-2ndline {
+  position: relative;
+  top: -5vw;
+  left: 9vw;
+  font: 600 1.5vw  'proxima_regular', sans-serif;
+  color: #222B3A;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.workout-item-2ndline-txt {
+  padding-right: 12%;
+}
+
+.workout-item-2ndline-img {
+  width: 53px;
+  height: 29px;
+  border-radius: 14.5px;
+  background-color: #DFDADA;
+}
+
+.workout-item-2ndline-img_radio {
+  width: 21px;
+  height: 21px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+  position: absolute;
+  top: 2px;
+}
+
+.workout-item-3rdline {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.workout-item-3rdline-viewimg {
+  position: relative;
+  top: -3.5vw;
+  left: 10vw;
+  padding-right: 6px;
+}
+
+.workout-item-3rdline-viewtxt {
+  position: relative;
+  top: -3.5vw;
+  left: 10vw;
+  padding-right: 18px;
+  font: 600 1vw  'proxima_regular', sans-serif;
+  color: #FFA43F;
+}
+
+.workout-item-3rdline-viewtxt a {
+  font: 600 1vw  'proxima_regular', sans-serif;
+  color: #FFA43F;
+}
+
+.workout-item-3rdline-remindimg {
+  position: relative;
+  top: -3.5vw;
+  left: 10vw;
+  padding-right: 6px;
+}
+
+.workout-item-3rdline-remindtxt {
+  position: relative;
+  top: -3.5vw;
+  left: 10vw;
+  padding-right: 8px;
+  font: 600 1vw  'proxima_regular', sans-serif;
+  color: #696969;
+}
+
+.workout-item-3rdline-remindtxt a {
+  font: 600 1vw  'proxima_regular', sans-serif;
+  color: #696969;
+}
+/*Slider*/
+
+.slider {
+  position: absolute;
+  height: 29px;
+  width: 53px;
+  border-radius: 14.5px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  
+}
+
+.slider_round {
+  height:26px;
+  width: 26px;
+  margin: 1px;
+  margin-left: 1px;
+  border-radius: 50%;
+  background: #fff;
+  color:#fff;
+  transition: margin-left .5s ease-in;
+  
+}
+
+.slider_round_checked {
+  height:26px;
+  width: 26px;
+  margin: 1px;
+  margin-left: 26px;
+  border-radius: 50%;
+  background: #fff;
+  color:#fff;
+  transition: margin-left .5s ease-in;
+    }
+
+.test {
+  width: 300px;
+}

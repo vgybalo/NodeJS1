@@ -32,7 +32,7 @@ $color_time:#BDBDBD;
     position: relative;
     height: 513px;
     overflow: hidden;     
-    background: $main_blue_bg /* url(../../image/module_bg.jpg) no-repeat*/;
+    background: $main_blue_bg url(./image/module_bg.jpg) no-repeat;
     background-size: cover;
     .name_main_content{
         background: $dark_blue;
@@ -121,7 +121,10 @@ $color_time:#BDBDBD;
                     font-family: 'Proxima Nova Semibold'; 
                 }
             }                    
-
+        .actual_theme_name {
+            padding-top: 180px;
+        }
         } 
     }
+    
 }

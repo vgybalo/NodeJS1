@@ -1,0 +1,58 @@
+.target {
+  border-bottom: 1px solid #E5E5E5;
+  display: flex;
+  justify-content: space-between;
+  }
+
+.target:last-child {
+  border-bottom: none;
+}
+
+.target_left_flow_block {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.module_targets_number_block {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.module-turgets-number {
+  display: block;
+  font: 600 1em  'proxima_regular', sans-serif;
+  color: #323232;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+  background-color: #F3F3F3;
+  text-align: center;
+  padding: 0.2em 0;
+  vertical-align: middle;
+}
+
+.module_turgets_text_block {
+  padding: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.module-turgets-text {
+  font: 600 1em  'proxima_regular', sans-serif;
+  color: #323232;
+  line-height: 1.2;
+  text-align: left;
+  padding: 0.8em 0.4em;
+}
+
+.module_turgets_checkbox_block {
+  display: flex;
+  align-items: center;
+}
+
+.module-turgets-checkbox label input {
+  display: none;
+}
+
