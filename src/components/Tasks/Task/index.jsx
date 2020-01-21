@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-// import React, { Component } from 'react';
+
 import styles from './styles.module.scss';
     import moduleItem1 from './images/module-item1.svg';
     import moduleItemGlases from './images/module-item-glases.svg';
@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
     import moduleSwitcher from './images/module-switcher.svg';
     import moduleItemView from './images/module-item-view.svg';
     import moduleItemRing from './images/module-item-ring.svg';
-    import Checkbox from '../../Checkbox'
+    
 
     /*function getBackgroundColor(){
         return '#000'
@@ -72,7 +72,7 @@ class Task extends React.Component {
                         
                             {/*Switcher*/}
                         <div className={styles['slider','workout-item-2ndline-img']} onClick={this.handleClick}>
-                            <div className={!this.state.active?styles.slider_round:styles.slider_round_checked}  >
+                            <div className={!this.state.active?styles.slider_round:styles.slider_round_checked} onClick={this.handleClick} >
                                 .
                             </div >   
                         </div>

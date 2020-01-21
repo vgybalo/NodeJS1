@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styles from './styles.module.scss';
 import Task from './Task';
+import Target from './Target';
+
+import triang_black from './images/triang-black.svg';
 
 const articles = [
   {
@@ -30,11 +33,34 @@ const articles = [
     "title": "Формирование эмоциональной связи с родителями3",
     "titleImg": ""
   },]
-
+const targets = [
+  {
+    "id": '1',
+    "title": 'Сформировать эмоциональную привязанность с ребенком',
+  },
+    {
+    "id": '2',
+    "title": 'Объяснить отцу и\или другим членами семьи, которые проживают с вами о предстоящем этапе в вашей семье',
+  },
+    {
+    "id": '3',
+    "title": 'Сформировать эмоциональную привязанность с ребенком, объяснить отцу и\или другим членами семьи, которые проживают с вами о предстоящем этапе в вашей семье.',
+  },
+]
 class Tasks extends React.Component {
     constructor(props){
         super(props)
-        this.state={}
+        this.state={
+            show:false
+
+        }
+        this.handleClick=this.handleClick.bind(this)
+    }
+    handleClick() {
+        
+        this.setState({
+            show:!this.state.show
+        })
     }
     componentDidMount(){
         this.setState({
@@ -43,27 +69,31 @@ class Tasks extends React.Component {
     }
 
     render(){
-        
-
-
+    
         return(
             <>
-        <div className={styles.target}>
-            <div className={styles.target_left_flow_block}>
-                <div className={styles.module_targets_number_block}>
-                     <div className={styles['module-turgets-number']}>       1       </div>
-                </div>
-                 <div className={styles.module_turgets_text_block}>
-                     <div className={styles['module-turgets-text']}>
-                         Сформировать эмоциональную привязанность с ребенком
-                     </div>
-                 </div>
-                 </div>
-                
-               
-                
+        
+            {/********** Targets*/}
+            {targets.map(el=>{return <Target id={el.id} title={el.title} />})}
+            
+        
+
+    <section className={styles.bg_gray}>
+        <div className={styles.container}>
+            <div className={styles.name_section}>
+                <h2>Проработать</h2>
+                {/********** Arrow for hidden articles*/}
+                <a classclassName={styles.triang_black} href="#" onClick={this.handleClick} ><img src={triang_black} alt="open" /></a>
             </div>
-        {articles.map(el=>{return <Task id={el.id} title={el.title} />})}
+			<div className={!this.state.show?styles.section_content:styles.section_content_hidden}>
+                
+                {/********** Articles*/}
+                {articles.map(el=>{return <Task id={el.id} title={el.title} />})}
+            </div>
+		</div>
+	</section>
+             
+        
             
             
          
