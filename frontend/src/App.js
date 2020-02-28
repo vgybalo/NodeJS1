@@ -8,7 +8,8 @@ import MainPage from './containers/Main';
 function App() {
   return (
     <Provider store={store}>
-      <MainPage />  
+      <MainPage /> 
+       
     </Provider>
   );
 }

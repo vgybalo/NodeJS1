@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
-import RegistrComponent from '../../components/RegistrComponent';
-
+import TableComponent from '../../components/TableComponent';
+import KokoitaComponent from '../../components/KokoitaComponent';
+import Todos from '../../components/Todos';
 
 class index extends Component {
     render() {
         return (
             <div>
 
-            <RegistrComponent/>
-            
+            <TableComponent/>
+            <KokoitaComponent/>
+               <Todos /> 
             </div>
         );
     }

@@ -1,33 +1,41 @@
 import axios from 'axios';
+//import PropTypes from 'prop-types';
+import { Router, Switch, Route, Redirect} from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_ERROR
+    REGISTR_REQUEST,
+    REGISTR_SUCCESS,
+    REGISTR_ERROR
 } from './actionTypes';
 
 
 const loginSuccess = data => ({
-    type: LOGIN_SUCCESS,
-    payload: {id: data.id, login: data.login}
+    type: REGISTR_SUCCESS,
+    payload: {login: data.login, pwd: data.pwd}
 });
 
 const loginError = data => ({
-    type: LOGIN_ERROR,
+    type: REGISTR_ERROR,
     payload: data
 });
+ 
+//export const registr = form => async dispatch => {
+    
+export function registr(payload) {
+  return (dispatch) => {
 
-export const login = form => async dispatch => {
-    try {
-        const res = await axios.post('/registr', form);
+        dispatch({
+        type: REGISTR_REQUEST
+        })
 
-        if (!res.data || res.data === false) {
-            dispatch(loginError('Неправильный логин или пароль'));
-        } else {
-            dispatch(loginSuccess(res.data));
-        }
-    } catch (e) {
-        dispatch(loginError(e.response.data));
+        setTimeout(() => {
+        dispatch({
+            type: REGISTR_SUCCESS,
+            payload: {
+            name: payload.name,
+            isAuthenticated: true
+            }
+        })
+        },2000)
     }
-};
-
-c
+}

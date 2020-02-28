@@ -1,7 +1,7 @@
 import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_ERROR
+    REGISTR_REQUEST,
+    REGISTR_SUCCESS,
+    REGISTR_ERROR
 } from '../../src/actions/actionTypes';
 import update from 'immutability-helper';
 
@@ -18,13 +18,13 @@ export default (state = initialState, action) => {
     const { type, payload } = action;
 
     switch(type){
-        case LOGIN_REQUEST:
+        case REGISTR_REQUEST:
             return {
                 ...state,
                 isLoading: true,
                 isError: false
             };
-        case LOGIN_SUCCESS:
+        case REGISTR_SUCCESS:
             sessionStorage.setItem('auth', JSON.stringify(payload));
             return {
                 ...state,
@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
                 isLoading: false,
                 shouldRedirect: true
             };
-        case LOGIN_ERROR:
+        case REGISTR_ERROR:
             return {
                 ...state,
                 errorMessage: payload,

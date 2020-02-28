@@ -5,7 +5,7 @@ import createBrowserHistory from 'history/createBrowserHistory'
 // Pages
 import Home from './App';
 //import SomeComponent from './components/SomeComponent';
-import RegistrComponent from './components/RegistrComponent';
+import RegistrContainer from './containers/RegistrContainer';
 
 const history = createBrowserHistory();
 // Layouts
@@ -13,7 +13,7 @@ const history = createBrowserHistory();
 import SearchLayout from './components/search-layout';*/
 export default (
    <Router history={history}>
-                <Route exact path="/registr" component={RegistrComponent} />
+                <Route exact path="/registr" component={RegistrContainer} />
                 <Route exact path="/" component={Home} />
     </Router>
 
