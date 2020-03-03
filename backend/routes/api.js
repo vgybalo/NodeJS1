@@ -24,8 +24,9 @@ router.get('/registr', function(req, res) {
 //registration
 router.post('/registr', async (req, res) => {
     try {
-        const {login, pwd} = req.body; 
-        const a =  await CreateOne(login, pwd);
+        const {login, pwd, name, surname, email} = req.body; 
+        console.log(req.body);
+        const a =  await CreateOne(login, pwd, name, surname, email);
         const token = jwt.sign({id:a._id}, tokenSecret, {expiresIn: 30000});
         const refreshtoken = jwt.sign({id:a._id}, tokenSecret2, {expiresIn: 259200000});
         
@@ -92,7 +93,7 @@ router.post('/add', verify, async (req, res) => {
         let userId = jwt.verify(auth, tokenSecret);
        
         console.log(userId.id);
-        await CreateArticle(title, text, userId.id);
+        await CreateArticle(title, text, userId.id, done, userDone);
         res.send(title + '&nbsp' + text);
     }
     catch(err) {

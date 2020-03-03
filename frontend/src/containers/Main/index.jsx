@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TableComponent from '../../components/TableComponent';
 import KokoitaComponent from '../../components/KokoitaComponent';
 import Todos from '../../components/Todos';
+import AddTodo from '../../components/AddTodo';
 
 class index extends Component {
     render() {
@@ -11,6 +12,7 @@ class index extends Component {
 
             <TableComponent/>
             <KokoitaComponent/>
+                <AddTodo />
                <Todos /> 
             </div>
         );

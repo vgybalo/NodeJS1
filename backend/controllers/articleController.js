@@ -1,8 +1,8 @@
 const ArticleModel = require('../models/article');
 
-module.exports.CreateArticle = async (title, text, userId)=> {   
+module.exports.CreateArticle = async (title, text, userId, done, userDone)=> {   
     try {            
-        const article = await ArticleModel ({title, text, userId});
+        const article = await ArticleModel ({title, text, userId, done, userDone});
         const data = await article.save();
         console.log(data);
         return data;

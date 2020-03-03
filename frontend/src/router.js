@@ -6,14 +6,16 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import Home from './App';
 //import SomeComponent from './components/SomeComponent';
 import RegistrContainer from './containers/RegistrContainer';
+import LoginContainer from './containers/LoginContainer';
 
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 // Layouts
 /*import MainLayout from './components/main-layout';
 import SearchLayout from './components/search-layout';*/
 export default (
    <Router history={history}>
                 <Route exact path="/registr" component={RegistrContainer} />
+                <Route exact path="/login" component={LoginContainer} />
                 <Route exact path="/" component={Home} />
     </Router>
 

@@ -4,24 +4,24 @@ import { Router, Switch, Route, Redirect} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import {history} from "../router.js";
 import {
-    REGISTR_REQUEST,
-    REGISTR_SUCCESS,
-    REGISTR_ERROR
+    ADDTODO_LOADING,
+    ADDTODO_SUCCESS,
+    ADDTODO_ERROR
 } from './actionTypes';
 
 
 const loginSuccess = data => ({
-    type: REGISTR_SUCCESS,
+    type: ADDTODO_SUCCESS,
     payload: {login: data.login, pwd: data.pwd},
     });
 
 const loginError = data => ({
-    type: REGISTR_ERROR,
+    type: ADDTODO_ERROR,
     payload: data
 });
  
 //export const registr = form => async dispatch => {
-    export const registr = form => async dispatch => {
+    export const addTodo = form => async dispatch => {
         //let history = useHistory();
     try {
         console.log(form);
@@ -42,7 +42,7 @@ const loginError = data => ({
     }
 };
 
-    export const login = form => async dispatch => {
+    /*export const login = form => async dispatch => {
         //let history = useHistory();
     try {
         console.log(form);
@@ -61,4 +61,4 @@ const loginError = data => ({
         console.log('12346')
         dispatch(loginError('invalid login or pwd'));
     }
-};
+};*/

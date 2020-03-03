@@ -1,8 +1,8 @@
 const UserModel = require('../models/user');
-module.exports.CreateOne = async (login, pwd)=> {
+module.exports.CreateOne = async (login, pwd, name, surname, email)=> {
     try {
         const user = UserModel ({
-            login, pwd
+            login, pwd, name, surname, email
         });
         const data = await user.save();
         console.log(data);
@@ -12,6 +12,8 @@ module.exports.CreateOne = async (login, pwd)=> {
         console.log(err);
     }    
 };
+
+
 module.exports.LoginOne = async (login, pwd) => {
     
     try {

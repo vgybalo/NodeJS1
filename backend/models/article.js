@@ -13,6 +13,14 @@ const ArticleSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true
+    },
+    done: {
+        type: String,
+        required: true
+    },
+    userDone: {
+        type: String,
+        required: true
     }
 });
 
